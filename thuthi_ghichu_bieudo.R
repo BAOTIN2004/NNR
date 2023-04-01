@@ -58,3 +58,9 @@ MSD <- cbind(Bent.M, Bent.sd)
 par(mar = c(5, 4, 4, 4))
 barplot(Bent.M, xlab = "Beach", ylim = c(0, 20), ylab = "Richness", col = rainbow(9))
 
+
+
+sdsd 
+
+
+
