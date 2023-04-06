@@ -134,5 +134,75 @@ coplot(pH ~ SDI | LOGAlt * fForested,panel = panel.lm, data = pHEire)
 coplot(pH ~ SDI | LOGAlt * fForested,panel = panel.lm, data = pHEire, number = 2)
 # giá trị của dữ liệu được chia làm 2 nhóm 
 cut(pHEire$Temperature, breaks = 2)
+# Biến pH và SDI được sử dụng để vẽ đồ thị, trong đó pH là biến phụ thuộc và SDI là biến độc lập.
+# Dữ liệu được lấy từ bộ dữ liệu pHEire.
+# Đồ thị được chia thành các panel dọc theo giá trị LOGAlt và fForested.
+# Mỗi panel được vẽ với hàm panel.lm, biểu thị một mô hình tuyến tính giữa pH và SDI trên panel đó.
+# Tổng số panel được hiển thị là 3.
+# Kích thước chữ được đặt là 1.5 và kí hiệu được sử dụng là 19.
+# Màu sắc được chọn dựa trên biến Temp2.num từ bộ dữ liệu pHEire, với mỗi giá trị được ánh xạ vào một mức xám khác nhau.
+coplot(pH ~ SDI | LOGAlt * fForested,panel = panel.lm, data = pHEire,number = 3, cex = 1.5, pch = 19,col = gray(pHEire$Temp2.num / 3))
+#install.packages("lattice")
+# tạo ra một ma trận có kích thước 2x2 với các phần tử được sắp xếp theo thứ tự từ trái qua phải và từ trên xuống dưới là 2, 0, 1, 3.
+MyLayOut <- matrix(c(2, 0, 1, 3), nrow = 2, ncol=2,byrow = TRUE)
+# layout(mat = MyLayOut, widths = c(3, 1), heights = c(1, 3), respect = TRUE) sử dụng hàm layout để xác định bố cục của lưới đồ thị, trong đó:
 
+# mat = MyLayOut cho biết ma trận MyLayOut được sử dụng để định hình bố cục của lưới đồ thị.
+
+# widths = c(3, 1) cho biết chiều rộng của mỗi cột trong lưới đồ thị, với cột đầu tiên chiếm 3 phần tư (75%) chiều rộng của lưới, cột thứ hai chiếm 1 phần tư (25%) chiều rộng của lưới.
+
+# heights = c(1, 3) cho biết chiều cao của mỗi hàng trong lưới đồ thị, với hàng đầu tiên chiếm 1 phần tư (25%) chiều cao của lưới, hàng thứ hai chiếm 3 phần tư (75%) chiều cao của lưới.
+
+# respect = TRUE cho biết kích thước của các phần tử của lưới phải tương ứng với tỷ lệ chiều rộng và chiều cao của lưới.
+
+# Biến nf lưu trữ thông tin về kích thước của mỗi phần tử trong lưới đồ thị, dưới dạng một danh sách gồm 5 phần tử, bao gồm:
+  
+#   nf$ là một ma trận 2x2 chứa thông tin về số hàng và số cột của lưới đồ thị.
+
+# nf$widths là một vectơ 2 phần tử chứa thông tin về chiều rộng của mỗi cột trong lưới.
+
+# nf$heights là một vectơ 2 phần tử chứa thông tin về chiều cao của mỗi hàng trong lưới.
+
+# nf$respect cho biết liệu kích thước của các phần tử của lưới có tương ứng với tỷ lệ chiều rộng và chiều cao của lưới hay không.
+
+# nf$layout là một vectơ 4 phần tử chứa thông tin về kích thước của từng phần tử của lưới đồ thị, được đánh số từ 1 đến 4 theo thứ tự từ trái qua phải và từ trên xuống dưới.
+nf <- layout(mat = MyLayOut, widths = c(3, 1),heights = c(1, 3), respect = TRUE)
+layout.show(nf)
+ 
+# Đoạn code trên sử dụng ma trận MyLayOut để định hình bố cục của một lưới đồ thị và lưu trữ thông tin về kích thước của mỗi phần tử của lưới trong biến nf.
+
+# layout(mat = MyLayOut, widths = c(3, 1), heights = c(1, 3), respect = TRUE) sử dụng hàm layout để xác định bố cục của lưới đồ thị, trong đó:
+
+# mat = MyLayOut cho biết ma trận MyLayOut được sử dụng để định hình bố cục của lưới đồ thị.
+
+# widths = c(3, 1) cho biết chiều rộng của mỗi cột trong lưới đồ thị, với cột đầu tiên chiếm 3 phần tư (75%) chiều rộng của lưới, cột thứ hai chiếm 1 phần tư (25%) chiều rộng của lưới.
+
+# heights = c(1, 3) cho biết chiều cao của mỗi hàng trong lưới đồ thị, với hàng đầu tiên chiếm 1 phần tư (25%) chiều cao của lưới, hàng thứ hai chiếm 3 phần tư (75%) chiều cao của lưới.
+
+# respect = TRUE cho biết kích thước của các phần tử của lưới phải tương ứng với tỷ lệ chiều rộng và chiều cao của lưới.
+
+# Biến nf lưu trữ thông tin về kích thước của mỗi phần tử trong lưới đồ thị, dưới dạng một danh sách gồm 5 phần tử, bao gồm:
+
+# nf$ là một ma trận 2x2 chứa thông tin về số hàng và số cột của lưới đồ thị.
+
+# nf$widths là một vectơ 2 phần tử chứa thông tin về chiều rộng của mỗi cột trong lưới.
+
+# nf$heights là một vectơ 2 phần tử chứa thông tin về chiều cao của mỗi hàng trong lưới.
+
+# nf$respect cho biết liệu kích thước của các phần tử của lưới có tương ứng với tỷ lệ chiều rộng và chiều cao của lưới hay không.
+
+# nf$layout là một vectơ 4 phần tử chứa thông tin về kích thước của từng phần tử của lưới đồ thị, được đánh số từ 1 đến 4 theo thứ tự từ trái qua phải và từ trên xuống dưới.
+# title(MyText): Thêm tiêu đề vào đồ thị bằng cách sử dụng MyText để định nghĩa nội dung của tiêu đề.
+
+# expression: Cho phép sử dụng các ký hiệu đặc biệt trong đồ thị, ví dụ như sử dụng delta15N để biểu diễn ký hiệu delta với số nguyên 15 và chữ cái N, bằng cách sử dụng ylab = expression(paste(delta_{15}, "N")).
+
+# pairs(X): Vẽ biểu đồ scatterplot (biểu đồ phân tán) cho các biến trong ma trận X.
+
+# coplot(y~x|z): Vẽ biểu đồ scatterplot cho hai biến y và x với điều kiện phụ thuộc vào biến z.
+
+# layout(mat, widths, heights): Thiết lập bố cục đồ thị, cho phép vẽ nhiều đồ thị trong cùng một cửa sổ.
+
+# plot(x): Vẽ đồ thị tương ứng với dữ liệu số liệu x.
+
+# plot(y): Vẽ đồ thị tương ứng với dữ liệu số liệu y.
 
