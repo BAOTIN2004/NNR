@@ -121,6 +121,18 @@ setwd("E:/NNR/Dataset/Dataset")
 #hàm pairs() được sử dụng để tạo ra một ma trận các biểu đồ phân tán. Các cột thứ hai đến thứ chín của bộ dữ liệu Benthic được truyền vào hàm để tạo các biểu đồ phân tán cho các cặp cột tương ứng
 Benthic <- read.table(file = "RIKZ2.txt",header = TRUE)
 pairs(Benthic[, 2:9])
-
+#coplot()" tạo ra một biểu đồ phân tán có điều kiện, trong đó mỗi điểm trên biểu đồ tương ứng với một quan sát của "Richness" và "NAP", và màu sắc của điểm được sử dụng để chỉ ra giá trị của "grainsize". Biểu đồ này cho phép bạn xem xét mối quan hệ giữa "Richness" và "NAP" trong các phân loại khác nhau của "grainsize".
+coplot(Richness ~ NAP | grainsize, pch=19,data = Benthic)
+setwd("E:/NNR/Dataset/Dataset")
+pHEire <- read.table(file = "SDI2003.txt",header = TRUE)
+#hêm vào data frame "pHEire" bằng cách lấy logarit cơ số 10 của cột "Altitude"
+pHEire$LOGAlt <- log10(pHEire$Altitude)
+#biến "Forested" được chuyển đổi thành một factor và lưu vào cột mới "fForested"
+pHEire$fForested <- factor(pHEire$Forested)
+#"coplot()" được sử dụng để tạo biểu đồ phân tán có điều kiện của biến "pH" và "SDI" với sự ảnh hưởng của biến "LOGAlt" và "fForested"
+coplot(pH ~ SDI | LOGAlt * fForested,panel = panel.lm, data = pHEire)
+coplot(pH ~ SDI | LOGAlt * fForested,panel = panel.lm, data = pHEire, number = 2)
+# giá trị của dữ liệu được chia làm 2 nhóm 
+cut(pHEire$Temperature, breaks = 2)
 
 
