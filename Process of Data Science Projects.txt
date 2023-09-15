@@ -1,0 +1,5 @@
+
+
+các bước thực hiện dự án khoa học dữ liệu
+1. discovery( tìm kiếm dữ liệu) >> << 2.data preparation( chuẩn bị dữ liệu thô phù hợp cho dự án) >> << 3.Model planning( lập kế hoạch mo hình)>> 
+4. Model building( xây dựng mô hình phân tích dữ liệu)>> 5.Communicate results ( truyền đạt kết quả) >> 6. Operationalize( vận hành dự án)
